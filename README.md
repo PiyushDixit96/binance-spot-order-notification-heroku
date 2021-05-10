@@ -1,5 +1,5 @@
 <h1 align="center">Welcome to Binance Spot Order Notifier via Telegram👋</h1>
-<h2>Binance does not currently offer notifications when orders are created, cancelled or fulfilled etc.. With this repo you will receive telegram notifications for your binance spot order status.</h2>
+<h2>Binance does not currently offer notification when order created, cancelled or fulfilled etc.. With this repo you will receive telegram notification for your binance spot order status.</h2>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/PiyushDixit96/binance-order-notifier/blob/main/LICENSE" target="_blank">
@@ -38,12 +38,40 @@
 1. Create account on Heroku (skip if you have)
 2. Login to Heroku (if your are not)
 3. Click [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/PiyushDixit96/binance-order-notifier)
-4. Follow Steps
+
+![fullUntitled](https://user-images.githubusercontent.com/79581397/117697809-89587b00-b1e0-11eb-98d3-3086f973ce84.jpg)
+
+5. Give any name in "App name" field
+6. Fill required fields in "Config Vars"
+7. Click "Depoly app"
+8. When you see " Your app was successfully deployed. " your bot started automatically.
+9. `important step for preventing idling heroku app`. Click "View" and copy URL when new tab open in your browser
+
+![DSCapture](https://user-images.githubusercontent.com/79581397/117698015-d1779d80-b1e0-11eb-8b57-0224ab96e3ee.JPG)
+
+10. Goto [UptimeRobot](https://uptimerobot.com/) and Create free account
+11. Click "Add New Monitor"
+12. Monitor Type : HTTPS
+13. Friendly Name : any name
+14. URL (or IP): paste URL of your app. (you copy URL in Step 8)
+15. Monitoring Interval : 20 minutes
+16. Click " Create Monitor "
+17. Now Enjoy
 ------------
 ### Run Locally
 - Download and install NodeJs
 - Download Repo and open Repo root folder.
-- Fill your data in .env file
+- Create .env in root folder and copy , paste below code
+ ```sh
+TELEGRAM_TOKEN="you telegram token"
+TELEGRAM_CHAT_ID="your telegram chat id"
+BINANCE_API_KEY="binance api key"
+BINANCE_SECRET_KEY="binance api sercet"
+TIME_ZONE_STRING="your time zone string"
+
+Time zone string example "Asia/Kolkata"
+```
+- Edit required fields in .env file and save
 - Open terminal on current folder 
 - Run this command to install `npm install`
 - Run this to start `npm start`
@@ -54,6 +82,7 @@
 
 * Twitter: [@PiyushDixit\_](https://twitter.com/PiyushDixit_)
 * Github: [@PiyushDixit96](https://github.com/PiyushDixit96)
+* Telegram: [@Killer_PD](https://t.me/Killer_PD)
 
 ## Show your support
 
