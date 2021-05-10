@@ -24,7 +24,7 @@
 1. Create account on Telegram (skip if you have)
 2. Create Telegram Bot Goto [Bot help](https://core.telegram.org/bots#3-how-do-i-create-a-bot) follow steps at the END Copy **TOKEN**
 3. Open created Bot and click **START**
-4. Goto @getuseridbot and and click **START** and copy **NUMERIC VALUE** this is your **CHAT ID**
+4. Goto [@getuseridbot](t.me/getuseridbot) and and click **START** and copy **NUMERIC VALUE** this is your **CHAT ID**
 
 <h4>SETUP BINANCE ACCOUNT</h4>
 
