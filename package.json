@@ -1,12 +1,16 @@
 {
   "name": "binance-spot-order-notifier",
   "version": "1.0.0",
-  "description": "Binance does not currently offer notification when order created, cancelled or fulfilled etc.. With this repo you will receive telegram notification for your binance spot order status.",
+  "description": "Binance does not currently offer notifications when orders are created, cancelled or fulfilled etc.. With this repo you will receive telegram notifications for your binance spot order status.",
   "main": "index.js",
-  "repository" : {     
-     "type" : "git",
-      "url" : "https://github.com/PiyushDixit96/binance-order-notifier.git" 
-   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PiyushDixit96/binance-order-notifier.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
   "dependencies": {
     "binance": "^1.3.5",
     "dotenv": "^9.0.0",
@@ -14,8 +18,9 @@
     "slimbot": "^5.1.0"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
   },
   "keywords": [],
   "author": "Piyush Dixit",
