@@ -62,23 +62,23 @@ function process_data(data) {
     if (data.eventType === 'executionReport') {
         if (data.executionType === 'NEW') {
             if (data.orderStatus === 'NEW') {
-                txt = `💸 💸 💸\n<b>Spot Order CREATED\nSide:</b>  ${data.side}\n<b>Symbol:</b>  #${data.symbol}\n<b>Price:</b>  ${fixFloat(data.price)}\n<b>Quantity:</b>  ${fixFloat(data.quantity)}\n<b>Order ID:</b>  #ID${data.orderId}`
+                txt = `💸 💸 💸\n<b>Spot Order CREATED\nSide:</b>  ${data.side}\n<b>Symbol:</b>  #${data.symbol}\n<b>Price:</b>  ${data.price}\n<b>Quantity:</b>  ${fixFloat(data.quantity)}\n<b>Order ID:</b>  #ID${data.orderId}`
             }
             else if (data.orderStatus === 'REJECTED') {
-                txt = `🚫 🚫 🚫\n<b>Spot Order REJECTED\nSide:</b>  ${data.side}\n<b>Symbol:</b>  #${data.symbol}\n<b>Price:</b>  ${fixFloat(data.price)}\n<b>Quantity:</b>  ${fixFloat(data.quantity)}\n<b>Order ID:</b>  #ID${data.orderId}`
+                txt = `🚫 🚫 🚫\n<b>Spot Order REJECTED\nSide:</b>  ${data.side}\n<b>Symbol:</b>  #${data.symbol}\n<b>Price:</b>  ${data.price}\n<b>Quantity:</b>  ${fixFloat(data.quantity)}\n<b>Order ID:</b>  #ID${data.orderId}`
             }
         } else if (data.executionType === 'CANCELED') {
             if (data.orderStatus === 'CANCELED') {
-                txt = `🛑 🛑 🛑\n<b>Spot Order CANCELED\nSide:</b>  ${data.side}\n<b>Symbol:</b>  #${data.symbol}\n<b>Price:</b>  ${fixFloat(data.price)}\n<b>Quantity:</b>  ${fixFloat(data.quantity)}\n<b>Order ID:</b>  #ID${data.orderId}`
+                txt = `🛑 🛑 🛑\n<b>Spot Order CANCELED\nSide:</b>  ${data.side}\n<b>Symbol:</b>  #${data.symbol}\n<b>Price:</b>  ${data.price}\n<b>Quantity:</b>  ${fixFloat(data.quantity)}\n<b>Order ID:</b>  #ID${data.orderId}`
             }
         } else if (data.executionType === 'TRADE') {
             if (data.orderStatus === 'PARTIALLY_FILLED') {
-                txt = `💰 💰 💰\n<b>Spot Order PARTIALLY FILLED\nSide:</b>  ${data.side}\n<b>Symbol:</b>  #${data.symbol}\n<b>Price:</b>  ${fixFloat(data.price)}\n<b>Last Filled:</b>  ${fixFloat(data.lastTradeQuantity)}\n<b>Remaining:</b>  ${fixFloat(Number(data.quantity) - Number(data.accumulatedQuantity))}\n<b>Order ID:</b>  #ID${data.orderId}`
+                txt = `💰 💰 💰\n<b>Spot Order PARTIALLY FILLED\nSide:</b>  ${data.side}\n<b>Symbol:</b>  #${data.symbol}\n<b>Price:</b>  ${data.price}\n<b>Last Filled:</b>  ${fixFloat(data.lastTradeQuantity)}\n<b>Remaining:</b>  ${fixFloat(Number(data.quantity) - Number(data.accumulatedQuantity))}\n<b>Order ID:</b>  #ID${data.orderId}`
             } else if (data.orderStatus === 'FILLED') {
-                txt = `✅ ✅ ✅\n<b>Spot Order FULLY FILLED\nSide:</b>  ${data.side}\n<b>Symbol:</b>  #${data.symbol}\n<b>Price:</b>  ${fixFloat(data.price)}\n<b>Filled:</b>  ${fixFloat(data.accumulatedQuantity)}\n<b>Order ID:</b>  #ID${data.orderId}`
+                txt = `✅ ✅ ✅\n<b>Spot Order FULLY FILLED\nSide:</b>  ${data.side}\n<b>Symbol:</b>  #${data.symbol}\n<b>Price:</b>  ${data.price}\n<b>Filled:</b>  ${fixFloat(data.accumulatedQuantity)}\n<b>Order ID:</b>  #ID${data.orderId}`
             }
         } else if (['REPLACED', 'EXPIRED', 'PENDING_CANCEL'].includes(data.orderStatus)) {
-            txt = `🔴 🟡 🔵\n<b>Spot Order ${data.orderStatus}\nSide:</b>  ${data.side}\n<b>Symbol:</b>  #${data.symbol}\n<b>Price:</b>  ${fixFloat(data.price)}\n<b>Quantity:</b>  ${fixFloat(data.quantity)}\n<b>Order ID:</b>  #ID${data.orderId}`
+            txt = `🔴 🟡 🔵\n<b>Spot Order ${data.orderStatus}\nSide:</b>  ${data.side}\n<b>Symbol:</b>  #${data.symbol}\n<b>Price:</b>  ${data.price}\n<b>Quantity:</b>  ${fixFloat(data.quantity)}\n<b>Order ID:</b>  #ID${data.orderId}`
         } else {
             txt = `⚠️ ⚠️ ⚠️\n<b>Undefined</b>\nExecution Type:  ${data.executionType}\nOrder Status ${data.orderStatus}\nFull Details:\n${msg}`
         }
