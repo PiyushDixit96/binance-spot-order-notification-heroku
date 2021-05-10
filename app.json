@@ -1,0 +1,29 @@
+{
+    "name": "binance-spot-order-notifier",
+    "description": "Binance does not currently offer notifications when orders are created, cancelled or fulfilled etc.. With this repo you will receive telegram notifications for your binance spot order status.",
+    "logo": "https://i.ibb.co/WGZzx6r/Binance-Coin-BNB-icon.png",
+    "repository": "https://github.com/PiyushDixit96/binance-order-notifier.git",
+    "keywords": ["node", "binance","bot","market","maker","algo","crypto","spot","order","notifier","notification"],
+    "env": {
+      "BINANCE_API_KEY": {
+        "description": "Your Binance API Key",
+        "required": true
+      },
+      "BINANCE_SECRET_KEY": {
+        "description": "Your Binance API Secret",
+        "required": true
+      },
+      "TELEGRAM_TOKEN": {
+        "description": "Telegram Key for your bot (To create one follow https://core.telegram.org/bots#6-botfather )",
+        "required": true
+      },
+      "TELEGRAM_CHAT_ID": {
+        "description": "Unique identifier for the target chat, Your Telegram Chat ID ",
+        "required": true
+      },
+      "TIME_ZONE_STRING": {
+        "description": "your local TIME ZONE STRING, default is 'Asia/Kolkata'",
+        "required": false
+      }
+    }
+ }
