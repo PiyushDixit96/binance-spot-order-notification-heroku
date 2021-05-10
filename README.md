@@ -40,6 +40,13 @@
 3. Click [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/PiyushDixit96/binance-order-notifier)
 4. Follow Steps
 ------------
+### Run Locally
+- Download and install NodeJs
+- Download Repo and open Repo root folder.
+- Fill your data in .env file
+- Open terminal on current folder 
+- Run this command to install `npm install`
+- Run this to start `npm start`
 
 ## Author
 
