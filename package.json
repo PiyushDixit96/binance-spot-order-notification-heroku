@@ -1,7 +1,7 @@
 {
   "name": "binance-spot-order-notifier",
   "version": "1.0.0",
-  "description": "Binance does not currently offer notifications when orders are created, cancelled or fulfilled etc.. With this repo you will receive telegram notifications for your binance spot order status.",
+  "description": "Binance does not currently offer notification when order created, cancelled or fulfilled etc.. With this repo you will receive telegram notification for your binance spot order status.",
   "main": "index.js",
   "repository" : {     
      "type" : "git",
