@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const Request = require('request-promise');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -43,11 +44,11 @@ try {
 
     }, 60000).then(ws => {
         console.log(`${event} - Monitoring Spot User Order Data for binance.com`);
-        toTelegram(`<b>Binance Spot Order Monitor Started</b>\nthis message shows that you or heroku(if your are using) restart the bot.`)
+        sendMessage(`<b>Binance Spot Order Monitor Started</b>\nthis message shows that you or heroku(if your are using) restart the bot.`)
     })
 } catch (err) {
     console.error(`${event} - ${err}`)
-    toTelegram(err.toString())
+    sendMessage(err.toString())
 }
 
 function fixFloat(floatNum, Precision = 8) {
@@ -82,22 +83,39 @@ function process_data(data) {
         } else {
             txt = `⚠️ ⚠️ ⚠️\n<b>Undefined</b>\nExecution Type:  ${data.executionType}\nOrder Status ${data.orderStatus}\nFull Details:\n${msg}`
         }
-        toTelegram(txt)
+        sendMessage(txt)
     }
 }
 
-function toTelegram(text) {
-    let parse_mode = {
+function sendMessage(text) {
+    let params = {
+        chat_id: chat_id,
+        text: text,
         parse_mode: 'html'
     };
-    bot.sendMessage(chat_id, text, parse_mode)
-        .then(message => {
-            //console.log(message);
-            if (message['ok'] === true) {
-                console.log(`${event} - Message send to ${message['result']['chat']['first_name']} via Telegram`)
-            } else if (message['ok'] === false) {
-                console.log(`${event} - something went wrong while sending message to telegram see detailed error below.`)
-                console.error(message)
+    let options = {
+        uri: 'https://api.telegram.org/bot' + token + '/' + 'sendMessage',
+        qs: params,
+        simple: false,
+        resolveWithFullResponse: true,
+        forever: true
+    };
+    return Request(options)
+        .then(resp => {
+            if (resp.statusCode !== 200) {
+                throw new Error(resp.statusCode + ':\n' + resp.body);
             }
+            let updates = JSON.parse(resp.body);
+            if (updates.ok) {
+                console.log("Message send via Telegram")
+                return updates;
+            } else {
+                console.log(`something went wrong while sending message to telegram see detailed error below.`)
+                console.error(updates)
+                return null;
+            }
+        })
+        .catch(error => {
+            throw error;
         });
 }
