@@ -10,41 +10,41 @@
   </a>
 </p>
 
-> This repo send TELEGRAM ALERTS for BINANCE ORDER STATUS like CREATED, PARTIALLY FILLED, FILLED, CANCELLED, PENDING CANCEL, REJECTED, EXPIRED etc.
+> This repo sends TELEGRAM ALERTS for BINANCE ORDER STATUS like CREATED, PARTIALLY FILLED, FILLED, CANCELLED, PENDING CANCEL, REJECTED, EXPIRED etc.
 
 <h2>Deploy to Heroku</h2>
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/PiyushDixit96/binance-order-notifier)
 
 
-<h2>Setup before Depoly to Heroku</h2>
+<h2>Setup before Deploy to Heroku</h2>
 
 <h4>SETUP TELEGRAM BOT</h4>
 
 1. Create account on Telegram (skip if you have)
 2. Create Telegram Bot Goto [Bot help](https://core.telegram.org/bots#3-how-do-i-create-a-bot) follow steps at the END Copy **TOKEN**
 3. Open created Bot and click **START**
-4. Goto [@getuseridbot](https://t.me/getuseridbot) and and click **START** and copy **NUMERIC VALUE** this is your **CHAT ID**
+4. Goto [@getuseridbot](https://t.me/getuseridbot) and click **START** and copy **NUMERIC VALUE** this is your **CHAT ID**
 
 <h4>SETUP BINANCE ACCOUNT</h4>
 
 1. [Signup](https://www.binance.com/en/register?ref=35219097) for Binance (skip if you have)
-2. Enable Two-factor Authentication (skip if you done already)
+2. Enable Two-factor Authentication (skip if you're done already)
 3. Go API Center, [Create New](https://www.binance.com/en/my/settings/api-management?ref=35219097) Api Key and follow steps and at the END, SET API restrictions to  **ENABLE READING ** only
-4. **Copy API Key and Secret Key** save and Nodepad for later use
+4. **Copy API Key and Secret Key** save and Notepad for later use
 
-<h4>DEPOLY TO HEROKU</h4>
+<h4>DEPLOY TO HEROKU</h4>
 
 1. Create account on Heroku (skip if you have)
-2. Login to Heroku (if your are not)
+2. Login to Heroku (if you are not)
 3. Click [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/PiyushDixit96/binance-order-notifier)
 
 ![fullUntitled](https://user-images.githubusercontent.com/79581397/117697809-89587b00-b1e0-11eb-98d3-3086f973ce84.jpg)
 
 5. Give any name in "App name" field
 6. Fill required fields in "Config Vars"
-7. Click "Depoly app"
-8. When you see " Your app was successfully deployed. " your bot started automatically.
+7. Click "Deploy app"
+8. When you see , "Your app was successfully deployed." then your bot started automatically.
 9. `important step for preventing idling heroku app`. Click "View" and copy URL when new tab open in your browser
 
 ![DSCapture](https://user-images.githubusercontent.com/79581397/117698015-d1779d80-b1e0-11eb-8b57-0224ab96e3ee.JPG)
@@ -66,7 +66,7 @@
 TELEGRAM_TOKEN="you telegram token"
 TELEGRAM_CHAT_ID="your telegram chat id"
 BINANCE_API_KEY="binance api key"
-BINANCE_SECRET_KEY="binance api sercet"
+BINANCE_SECRET_KEY="binance api secret"
 TIME_ZONE_STRING="your time zone string"
 
 Time zone string example "Asia/Kolkata"
