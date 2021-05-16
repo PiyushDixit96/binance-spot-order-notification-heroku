@@ -66,8 +66,8 @@ function process_data(data) {
         l: lastTradeQuantity,
         z: Cumulative_filled_quantity
     } = data;
-    let str4 = symbol.slice(symbol.length - 4);
-    let str3 = symbol.slice(symbol.length - 3);
+    let str4 = Trim(symbol,4)//symbol.slice(symbol.length - 4);
+    let str3 = Trim(symbol,3)//symbol.slice(symbol.length - 3);
     let sy;
     if(["USDT", "BUSD", "TUSD", "USDC", "BIDR", "IDRT", "BVND"].includes(str4)) {
         sy = str4
@@ -140,4 +140,10 @@ function sendMessage(text) {
     }).catch(error => {
         throw error;
     });
+}
+
+function Trim(input, last_n_chr) {
+    if (!input || !input.length) { return; }
+    //last_n_chr = +last_n_chr; //parse to int
+    return input.slice(last_n_chr);
 }
