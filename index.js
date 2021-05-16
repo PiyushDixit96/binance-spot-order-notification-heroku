@@ -10,7 +10,7 @@ const secret_key = process.env['BINANCE_SECRET_KEY'];
 const NODE_ENV = process.env.NODE_ENV || "development";
 const port = process.env.PORT || 3000;
 const timeZone = process.env.TIME_ZONE_STRING || 'Asia/Kolkata';
-if(NODE_ENV === "development") {
+if (NODE_ENV === "development") {
     console.log("NODE_ENV development")
 } else {
     console.log("NODE_ENV production")
@@ -41,7 +41,7 @@ try {
         console.log(`${event} - Monitoring Spot User Order Data for binance.com`);
         sendMessage(`<b>Binance Spot Order Monitor Started</b>\nthis message shows that you or heroku(if your are using) restart the bot.`)
     })
-} catch(err) {
+} catch (err) {
     console.error(`${event} - ${err}`)
     sendMessage(err.toString())
 }
@@ -55,54 +55,57 @@ function fixFloat(floatNum, Precision = 8) {
 function process_data(data) {
     let {
         e: eventType,
-        x: executionType,
-        s: symbol,
-        p: price,
-        q: quantity,
-        S: side,
-        o: orderType,
-        i: orderId,
-        X: orderStatus,
-        l: lastTradeQuantity,
-        z: Cumulative_filled_quantity
     } = data;
-    let str4 = Trim(symbol,4)//symbol.slice(symbol.length - 4);
-    let str3 = Trim(symbol,3)//symbol.slice(symbol.length - 3);
-    let sy;
-    if(["USDT", "BUSD", "TUSD", "USDC", "BIDR", "IDRT", "BVND"].includes(str4)) {
-        sy = str4
-    } else if(["BNB", "BTC", "XRP", "TRX", "ETH", "AUD", "BRL", "EUR", "GBP", "RUB", "TRY", "PAX", "DAI", "UAH", "NGN", "VAI"].includes(str3)) {
-        sy = str3
-    }
-    let total = `${fixFloat(Number(price) * Number(quantity))} ${sy}`
-    if(orderType !== "LIMIT") {
-        let {
-            L: Lprice
-        } = data;
-        price = Lprice
-    }
     let txt;
-    if(eventType === 'executionReport') {
-        if(executionType === 'NEW') {
-            if(orderStatus === 'NEW') {
+    if (eventType === 'executionReport') {
+        let {
+            x: executionType,
+            s: symbol,
+            p: price,
+            q: quantity,
+            S: side,
+            o: orderType,
+            i: orderId,
+            X: orderStatus,
+            l: lastTradeQuantity,
+            z: Cumulative_filled_quantity
+        } = data;
+        let str4 = Trim(symbol, 4)
+        let str3 = Trim(symbol, 3)
+        let sy;
+        if (["USDT", "BUSD", "TUSD", "USDC", "BIDR", "IDRT", "BVND"].includes(str4)) {
+            sy = str4
+        }
+        if (["BNB", "BTC", "XRP", "TRX", "ETH", "AUD", "BRL", "EUR", "GBP", "RUB", "TRY", "PAX", "DAI", "UAH", "NGN", "VAI"].includes(str3)) {
+            sy = str3
+        }
+        let total = `${fixFloat(Number(price) * Number(quantity))} ${sy}`
+        if (orderType !== "LIMIT") {
+            let {
+                L: Lprice
+            } = data;
+            price = Lprice
+        }
+        if (executionType === 'NEW') {
+            if (orderStatus === 'NEW') {
                 txt = `💸 💸 💸\n<b>Spot Order CREATED\nSide:</b>  ${side}\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
-            } else if(orderStatus === 'REJECTED') {
+            } else if (orderStatus === 'REJECTED') {
                 txt = `🚫 🚫 🚫\n<b>Spot Order REJECTED\nSide:</b>  ${side}\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
             }
-        } else if(executionType === 'CANCELED') {
-            if(orderStatus === 'CANCELED') {
+        } else if (executionType === 'CANCELED') {
+            if (orderStatus === 'CANCELED') {
                 txt = `🛑 🛑 🛑\n<b>Spot Order CANCELED\nSide:</b>  ${side}\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
             }
-        } else if(executionType === 'TRADE') {
-            if(orderStatus === 'PARTIALLY_FILLED') {
+        } else if (executionType === 'TRADE') {
+            if (orderStatus === 'PARTIALLY_FILLED') {
                 txt = `💰 💰 💰  <b>Spot Order PARTIALLY FILLED Side:</b>  ${side}  <b>Symbol:</b>  #${symbol}  <b>Price:</b>  ${price}
                 <b>Last Filled:</b>  ${fixFloat(lastTradeQuantity)}
                 <b>Remaining:</b>  ${fixFloat(Number(quantity) - Number(Cumulative_filled_quantity))}
                 <b>Total:</b>  ${total}  <b>Order ID:</b>  #ID${orderId}`
-            } else if(orderStatus === 'FILLED') {
+            } else if (orderStatus === 'FILLED') {
                 txt = `✅ ✅ ✅\n<b>Spot Order FULLY FILLED\nSide:</b>  ${side}\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Filled:</b>  ${fixFloat(Cumulative_filled_quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
             }
-        } else if(['REPLACED', 'EXPIRED', 'PENDING_CANCEL'].includes(orderStatus)) {
+        } else if (['REPLACED', 'EXPIRED', 'PENDING_CANCEL'].includes(orderStatus)) {
             txt = `🔴 🟡 🔵\n<b>Spot Order ${orderStatus}\nSide:</b>  ${side}\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
         } else {
             txt = `⚠️ ⚠️ ⚠️\n<b>Undefined</b>\nExecution Type:  ${executionType}\nOrder Status ${orderStatus}\nFull Details:\n${data}`
@@ -110,6 +113,7 @@ function process_data(data) {
         sendMessage(txt)
     }
 }
+
 //sending telegram message
 function sendMessage(text) {
     let params = {
@@ -125,11 +129,11 @@ function sendMessage(text) {
         forever: true
     };
     return Request(options).then(resp => {
-        if(resp.statusCode !== 200) {
+        if (resp.statusCode !== 200) {
             throw new Error(resp.statusCode + ':\n' + resp.body);
         }
         let updates = JSON.parse(resp.body);
-        if(updates.ok) {
+        if (updates.ok) {
             console.log("Message send via Telegram")
             return updates;
         } else {
@@ -143,7 +147,9 @@ function sendMessage(text) {
 }
 
 function Trim(input, last_n_chr) {
-    if (!input || !input.length) { return; }
-    //last_n_chr = +last_n_chr; //parse to int
-    return input.slice(last_n_chr);
+    if (!input || !input.length) {
+        return;
+    }
+    let l = input.length - last_n_chr
+    return input.slice(l);
 }
