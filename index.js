@@ -88,22 +88,22 @@ function process_data(data) {
         }
         if (executionType === 'NEW') {
             if (orderStatus === 'NEW') {
-                txt = `💸 💸 💸\n<b>Spot Order CREATED\nSide:</b>  ${side}\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
+                txt = `💸 💸 💸\n<b>Spot ${side} Order CREATED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
             } else if (orderStatus === 'REJECTED') {
-                txt = `🚫 🚫 🚫\n<b>Spot Order REJECTED\nSide:</b>  ${side}\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
+                txt = `🚫 🚫 🚫\n<b>Spot ${side} Order REJECTED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
             }
         } else if (executionType === 'CANCELED') {
             if (orderStatus === 'CANCELED') {
-                txt = `🛑 🛑 🛑\n<b>Spot Order CANCELED\nSide:</b>  ${side}\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
+                txt = `🛑 🛑 🛑\n<b>Spot ${side} Order CANCELED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
             }
         } else if (executionType === 'TRADE') {
             if (orderStatus === 'PARTIALLY_FILLED') {
-                txt = `💰 💰 💰  <b>Spot Order PARTIALLY FILLED Side:</b>  ${side}  <b>Symbol:</b>  #${symbol}  <b>Price:</b>  ${price}
+                txt = `💰 💰 💰  <b>Spot ${side} Order PARTIALLY FILLED</b>\n<b>Symbol:</b>  #${symbol}  <b>Price:</b>  ${price}
                 <b>Last Filled:</b>  ${fixFloat(lastTradeQuantity)}
                 <b>Remaining:</b>  ${fixFloat(Number(quantity) - Number(Cumulative_filled_quantity))}
                 <b>Total:</b>  ${total}  <b>Order ID:</b>  #ID${orderId}`
             } else if (orderStatus === 'FILLED') {
-                txt = `✅ ✅ ✅\n<b>Spot Order FULLY FILLED\nSide:</b>  ${side}\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Filled:</b>  ${fixFloat(Cumulative_filled_quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
+                txt = `✅ ✅ ✅\n<b>Spot ${side} Order FULLY FILLED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Filled:</b>  ${fixFloat(Cumulative_filled_quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
             }
         } else if (['REPLACED', 'EXPIRED', 'PENDING_CANCEL'].includes(orderStatus)) {
             txt = `🔴 🟡 🔵\n<b>Spot Order ${orderStatus}\nSide:</b>  ${side}\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
