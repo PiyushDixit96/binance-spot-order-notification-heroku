@@ -17,6 +17,11 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/PiyushDixit96/binance-order-notifier)
 
 
+```diff
+- when new commit/update happens, you need to create new heroku app using Deploy to heroku button,
+- So that you can use the new feature.
+```
+------------
 <h2>Setup before Deploy to Heroku</h2>
 
 <h4>SETUP TELEGRAM BOT</h4>
@@ -57,6 +62,8 @@
 15. Monitoring Interval : 20 minutes
 16. Click " Create Monitor "
 17. Now Enjoy
+------------
+> <h3>Give a ⭐️ if this project helped you!</h3>
 ------------
 ### Run Locally
 - Download and install NodeJs
