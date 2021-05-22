@@ -79,20 +79,18 @@ function process_data(data) {
         if (["BNB", "BTC", "XRP", "TRX", "ETH", "AUD", "BRL", "EUR", "GBP", "RUB", "TRY", "PAX", "DAI", "UAH", "NGN", "VAI"].includes(str3)) {
             sy = str3
         }
-        let total
-        if (orderType !== "LIMIT") {
-            total = `${fixFloat(Number(price) * Number(quantity))} ${sy}`
-            let {
-                L: Last_price
-            } = data;
+        let total=``;
+        if (orderType === "MARKET") {
             price = Last_price
+        }else{
+            total = `\n<b>Total:</b>  ${fixFloat(Number(price) * Number(quantity))} ${sy}`
         }
         if (executionType === 'NEW') {
             if (orderStatus === 'NEW') {
                 if (orderType === "MARKET") {
                     txt = `✅ ✅ ✅\n<b>Spot ${orderType} ${side} Order CREATED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Order ID:</b>  #ID${orderId}`
                 }else {
-                    txt = `✅ ✅ ✅\n<b>Spot ${orderType} ${side} Order CREATED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
+                    txt = `✅ ✅ ✅\n<b>Spot ${orderType} ${side} Order CREATED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}${total}\n<b>Order ID:</b>  #ID${orderId}`
                 }
             } else if (orderStatus === 'REJECTED') {
                 if (orderType === "MARKET") {
