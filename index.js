@@ -79,18 +79,27 @@ function process_data(data) {
         if (["BNB", "BTC", "XRP", "TRX", "ETH", "AUD", "BRL", "EUR", "GBP", "RUB", "TRY", "PAX", "DAI", "UAH", "NGN", "VAI"].includes(str3)) {
             sy = str3
         }
-        let total = `${fixFloat(Number(price) * Number(quantity))} ${sy}`
+        let total
         if (orderType !== "LIMIT") {
+            total = `${fixFloat(Number(price) * Number(quantity))} ${sy}`
             let {
-                L: Lprice
+                L: Last_price
             } = data;
-            price = Lprice
+            price = Last_price
         }
         if (executionType === 'NEW') {
             if (orderStatus === 'NEW') {
-                txt = `✅ ✅ ✅\n<b>Spot ${side} Order CREATED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
+                if (orderType === "MARKET") {
+                    txt = `✅ ✅ ✅\n<b>Spot ${orderType} ${side} Order CREATED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Order ID:</b>  #ID${orderId}`
+                }else {
+                    txt = `✅ ✅ ✅\n<b>Spot ${orderType} ${side} Order CREATED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
+                }
             } else if (orderStatus === 'REJECTED') {
-                txt = `🚫 🚫 🚫\n<b>Spot ${side} Order REJECTED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}`
+                if (orderType === "MARKET") {
+                    txt = txt = `🚫 🚫 🚫\n<b>Spot ${orderType} ${side} Order CREATED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Order ID:</b>  #ID${orderId}\n<b>Order reject reason:</b>  #ID${Order_reject_reason}`
+                }else {
+                    txt = `🚫 🚫 🚫\n<b>Spot ${orderType} ${side} Order REJECTED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Total:</b>  ${total}\n<b>Order ID:</b>  #ID${orderId}\n<b>Order reject reason:</b>  #ID${Order_reject_reason}`
+                }
             }
         } else if (executionType === 'CANCELED') {
             if (orderStatus === 'CANCELED') {
