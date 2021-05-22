@@ -74,9 +74,7 @@ TELEGRAM_TOKEN="you telegram token"
 TELEGRAM_CHAT_ID="your telegram chat id"
 BINANCE_API_KEY="binance api key"
 BINANCE_SECRET_KEY="binance api secret"
-TIME_ZONE_STRING="your time zone string"
 
-Time zone string example "Asia/Kolkata"
 ```
 - Edit required fields in .env file and save
 - Open terminal on current folder 
