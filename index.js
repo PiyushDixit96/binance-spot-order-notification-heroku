@@ -69,7 +69,8 @@ function process_data(data) {
             X: orderStatus,
             l: lastTradeQuantity,
             z: Cumulative_filled_quantity,
-            L:Last_price
+            L:Last_price,
+            r:Order_reject_reason
         } = data;
         let str4 = Trim(symbol, 4)
         let str3 = Trim(symbol, 3)
