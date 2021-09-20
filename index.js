@@ -96,7 +96,7 @@ function process_data(data) {
                 }
             } else if (orderStatus === 'REJECTED') {
                 if (orderType === "MARKET") {
-                    txt = `🚫 🚫 🚫\n<b>Spot ${orderType} ${side} Order CREATED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Order ID:</b>  #ID${orderId}\n<b>Order reject reason:</b>  #ID${Order_reject_reason}`
+                    txt = `🚫 🚫 🚫\n<b>Spot ${orderType} ${side} Order REJECTED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Order ID:</b>  #ID${orderId}\n<b>Order reject reason:</b>  #ID${Order_reject_reason}`
                 }else {
                     txt = `🚫 🚫 🚫\n<b>Spot ${orderType} ${side} Order REJECTED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}${total}\n<b>Order ID:</b>  #ID${orderId}\n<b>Order reject reason:</b>  #ID${Order_reject_reason}`
                 }
