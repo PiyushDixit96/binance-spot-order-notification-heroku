@@ -10,7 +10,7 @@
   </a>
 </p>
 
-> This repo sends TELEGRAM ALERTS for BINANCE ORDER STATUS like CREATED, PARTIALLY FILLED, FILLED, CANCELLED, PENDING CANCEL, REJECTED, EXPIRED etc.
+## Please contact us for Future Order notification bot. Telegram: [@Killer_PD](https://t.me/Killer_PD)
 
 <h2>Deploy to Heroku</h2>
 
