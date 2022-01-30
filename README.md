@@ -1,9 +1,6 @@
 <h1 align="center">Welcome to Binance Spot Order Notifier(NodeJS) via Telegram👋</h1>
 <h2>Binance order notification when order created, cancelled or filled etc.. With this repo you will receive telegram notification for your binance spot order status.</h2>
 
-```diff
-- OCO not supported
-```
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/PiyushDixit96/binance-order-notifier/blob/main/LICENSE" target="_blank">
@@ -24,6 +21,7 @@
 ```diff
 - when new commit/update happens, you need to create new heroku app using Deploy to heroku button,
 - So that you can use the new feature.
+- OCO not supported
 ```
 ------------
 <h2>Setup before Deploy to Heroku</h2>
