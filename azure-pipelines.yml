@@ -15,7 +15,7 @@ variables:
   webAppName: ''
 
   # Environment name
-  environmentName: ''
+  environmentName: 'binanceNodejs'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
