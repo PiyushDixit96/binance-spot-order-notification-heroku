@@ -12,7 +12,7 @@ variables:
   azureSubscription: '55bc5ecf-ae9c-48e8-b883-24dbc47c2d2b'
 
   # Web app name
-  webAppName: ''
+  webAppName: 'Binance-Spot-Order-Notifier'
 
   # Environment name
   environmentName: 'binanceNodejs'
