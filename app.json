@@ -20,6 +20,11 @@
       "TELEGRAM_CHAT_ID": {
         "description": "Unique identifier for the target chat, Your Telegram Chat ID ",
         "required": true
+      },
+      "TIME_ZONE_STRING": {
+        "description": "your local TIME ZONE STRING, default is 'Asia/Kolkata'",
+        "required": false,
+        "value": "Asia/Kolkata"
       }
     }
  }
