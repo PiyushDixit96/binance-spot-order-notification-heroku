@@ -78,10 +78,10 @@ BINANCE_API_KEY="binance api key"
 BINANCE_SECRET_KEY="binance api secret"
 TIME_ZONE_STRING="your time zone string"
 
-Time zone string example "Asia/Kolkata" and this is not required.
-Default is "Asia/Kolkata"
-
 ```
+
+Time zone string example "Asia/Kolkata" and this is not required. [See Time zone string here](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
 - Edit required fields in .env file and save
 - Open terminal on current folder 
 - Run this command to install `npm install`
