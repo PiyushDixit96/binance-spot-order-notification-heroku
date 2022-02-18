@@ -15,8 +15,7 @@
 </p>
 
 ```diff
-- when new commit/update happens, you need to create new heroku app using Deploy to heroku button,
-- So that you can use the new feature.
+- when new commit happens, you need to create new heroku app using Deploy to heroku button, So that you can use the new feature.
 - OCO not supported
 ```
 ------------
