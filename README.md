@@ -31,7 +31,7 @@
 1. Create account on Telegram (skip if you have)
 2. Create Telegram Bot Goto [Bot help](https://core.telegram.org/bots#3-how-do-i-create-a-bot) follow steps at the END Copy **TOKEN**
 3. Open created Bot and click **START**
-4. Goto [@getuseridbot](https://t.me/getuseridbot) and click **START** and copy **NUMERIC VALUE** this is your **CHAT ID**
+4. Goto [@getuseridbot](https://t.me/getuseridbot) and click **START** and **copy NUMERIC VALUE** this is your **CHAT ID**
 
 <h4>SETUP BINANCE ACCOUNT</h4>
 
@@ -60,7 +60,7 @@
 11. Click "Add New Monitor"
 12. Monitor Type : HTTPS
 13. Friendly Name : any name
-14. URL (or IP): paste URL of your app. (you copy URL in Step 8)
+14. URL (or IP): paste URL of your app. (you copy URL in Step 9)
 15. Monitoring Interval : 20 minutes
 16. Click " Create Monitor "
 17. Now Enjoy
