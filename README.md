@@ -1,5 +1,8 @@
 <h1 align="center">Welcome to Binance Spot Order Notifier(NodeJS) via Telegram👋</h1>
-<h2>Binance order notification when order created, cancelled or filled etc.. With this repo you will receive telegram notification for your binance spot order status.</h2>
+<h2>Binance order notification when order created, cancelled or filled etc.. With this repo you will receive telegram notification for your binance spot order status.
+
+## Please contact us for Future Order notification bot. Telegram: [@Killer_PD](https://t.me/Killer_PD)
+</h2>
 
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
@@ -10,13 +13,6 @@
     <img alt="Twitter: PiyushDixit_" src="https://img.shields.io/twitter/follow/PiyushDixit_.svg?style=social" />
   </a>
 </p>
-
-## Please contact us for Future Order notification bot. Telegram: [@Killer_PD](https://t.me/Killer_PD)
-
-<h2>Deploy to Heroku</h2>
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/PiyushDixit96/binance-order-notifier)
-
 
 ```diff
 - when new commit/update happens, you need to create new heroku app using Deploy to heroku button,
@@ -29,16 +25,16 @@
 <h4>SETUP TELEGRAM BOT</h4>
 
 1. Create account on Telegram (skip if you have)
-2. Create Telegram Bot Goto [Bot help](https://core.telegram.org/bots#3-how-do-i-create-a-bot) follow steps at the END Copy **TOKEN**
+2. Create Telegram Bot Goto [Bot help](https://core.telegram.org/bots#3-how-do-i-create-a-bot) follow steps at the END Copy **TOKEN** save to Notepad for later use
 3. Open created Bot and click **START**
-4. Goto [@getuseridbot](https://t.me/getuseridbot) and click **START** and **copy NUMERIC VALUE** this is your **CHAT ID**
+4. Goto [@getuseridbot](https://t.me/getuseridbot) and click **START** and **copy NUMERIC VALUE** this is your **CHAT ID** save to Notepad for later use
 
 <h4>SETUP BINANCE ACCOUNT</h4>
 
 1. [Signup](https://www.binance.com/en/register?ref=35219097) for Binance (skip if you have)
 2. Enable Two-factor Authentication (skip if you're done already)
 3. Go API Center, [Create New](https://www.binance.com/en/my/settings/api-management?ref=35219097) Api Key and follow steps and at the END, SET API restrictions to  **ENABLE READING ** only
-4. **Copy API Key and Secret Key** save and Notepad for later use
+4. **Copy API Key and Secret Key** save to Notepad for later use
 
 <h4>DEPLOY TO HEROKU</h4>
 
@@ -52,7 +48,7 @@
 6. Fill required fields in "Config Vars"
 7. Click "Deploy app"
 8. When you see , "Your app was successfully deployed." then your bot started automatically.
-9. `important step for preventing idling heroku app`. Click "View" and copy URL when new tab open in your browser
+9. `important step for preventing idling heroku app`. Click "View" and copy URL when new tab open in your browser save to Notepad for later use
 
 ![DSCapture](https://user-images.githubusercontent.com/79581397/117698015-d1779d80-b1e0-11eb-8b57-0224ab96e3ee.JPG)
 
