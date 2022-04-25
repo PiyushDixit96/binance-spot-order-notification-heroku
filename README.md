@@ -6,7 +6,7 @@
 
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
-  <a href="https://github.com/PiyushDixit96/binance-order-notifier/blob/main/LICENSE" target="_blank">
+  <a href="https://github.com/PiyushDixit96/binance-spot-order-notification-heroku/blob/main/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
   <a href="https://twitter.com/PiyushDixit_" target="_blank">
@@ -39,7 +39,7 @@
 
 1. Create account on Heroku (skip if you have)
 2. Login to Heroku (if you are not)
-3. Click [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/PiyushDixit96/binance-order-notifier)
+3. Click [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/PiyushDixit96/binance-spot-order-notification-heroku)
 
 ![fullUntitled](https://user-images.githubusercontent.com/79581397/117697809-89587b00-b1e0-11eb-98d3-3086f973ce84.jpg)
 
