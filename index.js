@@ -17,6 +17,9 @@ if (NODE_ENV === "development") {
 } else {
     console.log("NODE_ENV production")
 }
+
+console.log(notification_settings)
+
 //Indian time string
 const event = new Date().toLocaleString('en-IN', {
     timeZone: timeZone,
