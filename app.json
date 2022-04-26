@@ -2,7 +2,7 @@
     "name": "binance-spot-order-notifier",
     "description": "Binance does not currently offer notifications when orders are created, cancelled or fulfilled etc.. With this repo you will receive telegram notifications for your binance spot order status.",
     "logo": "https://i.ibb.co/WGZzx6r/Binance-Coin-BNB-icon.png",
-    "repository": "https://github.com/PiyushDixit96/binance-order-notifier.git",
+    "repository": "https://github.com/PiyushDixit96/binance-spot-order-notification-heroku.git",
     "keywords": ["node", "binance","bot","market","maker","algo","crypto","spot","order","notifier","notification"],
     "env": {
       "BINANCE_API_KEY": {
