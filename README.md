@@ -82,11 +82,18 @@ BINANCE_API_KEY="binance api key"
 BINANCE_SECRET_KEY="binance api secret"
 TIME_ZONE_STRING="your time zone string"
 NOTIFICATION_SETTINGS="[{'NEW': 1, 'CANCELED': 1, 'TRADE': 1},{'LIMIT': 1, 'MARKET': 1, 'STOP_LOSS': 1},{'BUY': 1, 'SELL': 1}]"
+```
 
-// 0 is Disable and 1 is enable
-// when 'NEW': 0 it means you will not notify when new order created.
-// when 'LIMIT': 0 it means you will not notify when any LIMIT order.
-// All settings depends on another settings.
+### NOTIFICATION_SETTINGS Description
+```
+- 0 is Disable and 1 is Enable
+- when 'NEW': 0 it means you will not notify when new order created.
+- when 'LIMIT': 0 it means you will not notify any LIMIT order.
+- Example 1 : if you want only Filled orders alert,
+  so settings are [{'NEW': 0, 'CANCELED': 0, 'TRADE': 1},{'LIMIT': 1, 'MARKET': 1, 'STOP_LOSS': 1},{'BUY': 1, 'SELL': 1}]
+- Example 2 : if you want only Sell Filled orders alert,
+  so settings are [{'NEW': 0, 'CANCELED': 0, 'TRADE': 1},{'LIMIT': 1, 'MARKET': 1, 'STOP_LOSS': 1},{'BUY': 0, 'SELL': 1}]
+- All settings depends on another settings.
 
 ```
 
