@@ -7,6 +7,8 @@ const token = process.env['TELEGRAM_TOKEN'];
 const chat_id = process.env['TELEGRAM_CHAT_ID'];
 const api_key = process.env['BINANCE_API_KEY'];
 const secret_key = process.env['BINANCE_SECRET_KEY'];
+const notification_settings = JSON.parse(process.env['NOTIFICATION_SETTINGS']);
+
 const NODE_ENV = process.env.NODE_ENV || "development";
 const port = process.env.PORT || 3000;
 const timeZone = process.env.TIME_ZONE_STRING || 'Asia/Kolkata';
@@ -51,6 +53,10 @@ function fixFloat(floatNum, Precision = 8) {
     const str = num.toString();
     return str.replace(/(\.\d+?)0+\b/g, "$1") //fix 20.000 to 20.0 or 0.0000000120 to 0.000000012
 }
+//[{"NEW": 1, "CANCELED": 1, "TRADE": 1},{"LIMIT": 1, "MARKET": 1, "STOP_LOSS": 1},{"BUY": 1, "SELL": 1}]
+noti_orderStatus = notification_settings[0] //{"NEW": 1, "CANCELED": 1, "TRADE": 1}
+noti_orderType = notification_settings[1]//{"LIMIT": 1, "MARKET": 1, "STOP_LOSS": 1}
+noti_side = notification_settings[2]//{"BUY": 1, "SELL": 1}
 
 function process_data(data) {
     let {
@@ -69,8 +75,8 @@ function process_data(data) {
             X: orderStatus,
             l: lastTradeQuantity,
             z: Cumulative_filled_quantity,
-            L:Last_price,
-            r:Order_reject_reason
+            L: Last_price,
+            r: Order_reject_reason
         } = data;
         let str4 = Trim(symbol, 4)
         let str3 = Trim(symbol, 3)
@@ -81,42 +87,68 @@ function process_data(data) {
         if (["BNB", "BTC", "XRP", "TRX", "ETH", "AUD", "BRL", "EUR", "GBP", "RUB", "TRY", "PAX", "DAI", "UAH", "NGN", "VAI"].includes(str3)) {
             sy = str3
         }
-        let total=``;
+        let total = ``;
         if (orderType === "MARKET") {
             price = Last_price
-        }else{
+        } else {
             total = `\n<b>Total:</b>  ${fixFloat(Number(price) * Number(quantity))} ${sy}`
         }
-        if (executionType === 'NEW') {
-            if (orderStatus === 'NEW') {
-                if (orderType === "MARKET") {
-                    txt = `✅ ✅ ✅\n<b>Spot ${orderType} ${side} Order CREATED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Order ID:</b>  #ID${orderId}`
-                }else {
-                    txt = `✅ ✅ ✅\n<b>Spot ${orderType} ${side} Order CREATED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}${total}\n<b>Order ID:</b>  #ID${orderId}`
+        if (executionType === 'NEW' && noti_orderStatus['NEW'] === 1) {
+            if (side === 'BUY' && noti_side['BUY'] === 1 || side === 'SELL' && noti_side['SELL'] === 1) {
+                if (orderStatus === 'NEW') {
+                    if (orderType === "MARKET" && noti_orderType['MARKET'] === 1) {
+                        txt = `✅ ✅ ✅\n<b>Spot ${orderType} ${side} Order CREATED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Order ID:</b>  #ID${orderId}`
+                    } else if (
+                        ((orderType === "LIMIT" || orderType === "LIMIT_MAKER") && noti_orderType['LIMIT'] === 1) ||
+                        ((orderType === "STOP_LOSS" || orderType === "STOP_LOSS_LIMIT" || orderType === "TAKE_PROFIT" || orderType === "TAKE_PROFIT_LIMIT") && noti_orderType['STOP_LOSS'] === 1)
+                    ) {
+                        txt = `✅ ✅ ✅\n<b>Spot ${orderType} ${side} Order CREATED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}${total}\n<b>Order ID:</b>  #ID${orderId}`
+                    }
+                } else if (orderStatus === 'REJECTED') {
+                    if (orderType === "MARKET" && noti_orderType['MARKET'] === 1) {
+                        txt = `🚫 🚫 🚫\n<b>Spot ${orderType} ${side} Order REJECTED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Order ID:</b>  #ID${orderId}\n<b>Order reject reason:</b>  #ID${Order_reject_reason}`
+                    } else if (
+                        ((orderType === "LIMIT" || orderType === "LIMIT_MAKER") && noti_orderType['LIMIT'] === 1) ||
+                        ((orderType === "STOP_LOSS" || orderType === "STOP_LOSS_LIMIT" || orderType === "TAKE_PROFIT" || orderType === "TAKE_PROFIT_LIMIT") && noti_orderType['STOP_LOSS'] === 1)
+                    ) {
+                        txt = `🚫 🚫 🚫\n<b>Spot ${orderType} ${side} Order REJECTED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}${total}\n<b>Order ID:</b>  #ID${orderId}\n<b>Order reject reason:</b>  #ID${Order_reject_reason}`
+                    }
                 }
-            } else if (orderStatus === 'REJECTED') {
-                if (orderType === "MARKET") {
-                    txt = `🚫 🚫 🚫\n<b>Spot ${orderType} ${side} Order REJECTED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Quantity:</b>  ${fixFloat(quantity)}\n<b>Order ID:</b>  #ID${orderId}\n<b>Order reject reason:</b>  #ID${Order_reject_reason}`
-                }else {
-                    txt = `🚫 🚫 🚫\n<b>Spot ${orderType} ${side} Order REJECTED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}${total}\n<b>Order ID:</b>  #ID${orderId}\n<b>Order reject reason:</b>  #ID${Order_reject_reason}`
+            }
+        } else if (executionType === 'CANCELED' && noti_orderStatus['CANCELED'] === 1) {
+            if (side === 'BUY' && noti_side['BUY'] === 1 || side === 'SELL' && noti_side['SELL'] === 1) {
+                if (orderStatus === 'CANCELED') {
+                    if (
+                        ((orderType === "LIMIT" || orderType === "LIMIT_MAKER") && noti_orderType['LIMIT'] === 1) ||
+                        ((orderType === "STOP_LOSS" || orderType === "STOP_LOSS_LIMIT" || orderType === "TAKE_PROFIT" || orderType === "TAKE_PROFIT_LIMIT") && noti_orderType['STOP_LOSS'] === 1)
+                    ) {
+                        txt = `❎ ❎ ❎\n<b>Spot ${orderType} ${side} Order CANCELED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}${total}\n<b>Order ID:</b>  #ID${orderId}`
+                    }
                 }
             }
-        } else if (executionType === 'CANCELED') {
-            if (orderStatus === 'CANCELED') {
-                txt = `❎ ❎ ❎\n<b>Spot ${orderType} ${side} Order CANCELED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}${total}\n<b>Order ID:</b>  #ID${orderId}`
+        } else if (executionType === 'TRADE' && noti_orderStatus['TRADE'] === 1) {
+            if (side === 'BUY' && noti_side['BUY'] === 1 || side === 'SELL' && noti_side['SELL'] === 1) {
+                if ((orderType === "MARKET" && noti_orderType['MARKET'] === 1) ||
+                    ((orderType === "LIMIT" || orderType === "LIMIT_MAKER") && noti_orderType['LIMIT'] === 1) ||
+                    ((orderType === "STOP_LOSS" || orderType === "STOP_LOSS_LIMIT" || orderType === "TAKE_PROFIT" || orderType === "TAKE_PROFIT_LIMIT") && noti_orderType['STOP_LOSS'] === 1)
+                ) {
+                    if (orderStatus === 'PARTIALLY_FILLED') {
+                        txt = `⌛ ⌛ ⌛\n<b>Spot ${orderType} ${side} Order PARTIALLY FILLED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${Last_price}\n<b>Last Filled:</b>  ${fixFloat(lastTradeQuantity)}\n<b>Total Filled:</b>  ${fixFloat(Cumulative_filled_quantity)}\n<b>Remaining:</b>  ${fixFloat(Number(quantity) - Number(Cumulative_filled_quantity))}\n<b>Order ID:</b>  #ID${orderId}`
+                    } else if (orderStatus === 'FILLED') {
+                        txt = `💰 💰 💰\n<b>Spot ${orderType} ${side} Order FULLY FILLED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${Last_price}\n<b>Filled:</b>  ${fixFloat(Cumulative_filled_quantity)}${total}\n<b>Order ID:</b>  #ID${orderId}`
+                    }
+                }
             }
-        } else if (executionType === 'TRADE') {
-            if (orderStatus === 'PARTIALLY_FILLED') {
-                txt = `⌛ ⌛ ⌛\n<b>Spot ${orderType} ${side} Order PARTIALLY FILLED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${Last_price}\n<b>Last Filled:</b>  ${fixFloat(lastTradeQuantity)}\n<b>Total Filled:</b>  ${fixFloat(Cumulative_filled_quantity)}\n<b>Remaining:</b>  ${fixFloat(Number(quantity) - Number(Cumulative_filled_quantity))}\n<b>Order ID:</b>  #ID${orderId}`
-            } else if (orderStatus === 'FILLED') {
-                txt = `💰 💰 💰\n<b>Spot ${orderType} ${side} Order FULLY FILLED</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${Last_price}\n<b>Filled:</b>  ${fixFloat(Cumulative_filled_quantity)}${total}\n<b>Order ID:</b>  #ID${orderId}`
-            }
-        } else if (['REPLACED', 'EXPIRED', 'PENDING_CANCEL'].includes(orderStatus)) {
-            txt = `🔴 🟡 🔵\n<b>Spot ${orderType} ${side} Order ${orderStatus}</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}${total}\n<b>Order ID:</b>  #ID${orderId}`
-        } else {
-            txt = `⚠️ ⚠️⚠️\n<b>Undefined</b>\nExecution Type:  ${executionType}\nOrder Status ${orderStatus}\nFull Details:\n${data}`
         }
-        sendMessage(txt)
+        // else if (['REPLACED', 'EXPIRED', 'PENDING_CANCEL'].includes(orderStatus)) {
+        //     txt = `🔴 🟡 🔵\n<b>Spot ${orderType} ${side} Order ${orderStatus}</b>\n<b>Symbol:</b>  #${symbol}\n<b>Price:</b>  ${price}\n<b>Quantity:</b>  ${fixFloat(quantity)}${total}\n<b>Order ID:</b>  #ID${orderId}`
+        // } else {
+        //     txt = `⚠️ ⚠️⚠️\n<b>Undefined</b>\nExecution Type:  ${executionType}\nOrder Status ${orderStatus}\nFull Details:\n${data}`
+        // }
+        if (txt) {
+            sendMessage(txt)
+        }
+
     }
 }
 
