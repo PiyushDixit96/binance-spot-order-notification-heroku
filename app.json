@@ -22,7 +22,7 @@
         "required": true
       },
       "NOTIFICATION_SETTINGS": {
-        "description": "Set 1 to Enable and 0 to Disable. Copy this >> [{'NEW': 1, 'CANCELED': 1, 'TRADE': 1},{'LIMIT': 1, 'MARKET': 1, 'STOP_LOSS': 1},{'BUY': 1, 'SELL': 1}] << and paste in below text box and make changes as per your need See Github my repository help",
+        "description": "Set 1 to Enable and 0 to Disable. Make changes as per your need. See My Github Repository help",
         "required": false,
         "value": "[{'NEW': 1, 'CANCELED': 1, 'TRADE': 1},{'LIMIT': 1, 'MARKET': 1, 'STOP_LOSS': 1},{'BUY': 1, 'SELL': 1}]"
       },
