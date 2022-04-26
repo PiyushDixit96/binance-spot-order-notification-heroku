@@ -72,6 +72,7 @@ TELEGRAM_CHAT_ID="your telegram chat id"
 BINANCE_API_KEY="binance api key"
 BINANCE_SECRET_KEY="binance api secret"
 TIME_ZONE_STRING="your time zone string"
+NOTIFICATION_SETTINGS='[{"NEW": 1, "CANCELED": 1, "TRADE": 1},{"LIMIT": 1, "MARKET": 1, "STOP_LOSS": 1},{"BUY": 1, "SELL": 1}]'
 
 ```
 
