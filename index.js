@@ -7,7 +7,7 @@ const token = process.env['TELEGRAM_TOKEN'];
 const chat_id = process.env['TELEGRAM_CHAT_ID'];
 const api_key = process.env['BINANCE_API_KEY'];
 const secret_key = process.env['BINANCE_SECRET_KEY'];
-const notification_settings = JSON.parse(process.env['NOTIFICATION_SETTINGS']);
+const notification_settings = JSON.parse(process.env['NOTIFICATION_SETTINGS'].replace(/'/g,'"'));
 
 const NODE_ENV = process.env.NODE_ENV || "development";
 const port = process.env.PORT || 3000;
