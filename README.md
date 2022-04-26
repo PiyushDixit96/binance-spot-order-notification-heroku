@@ -16,8 +16,16 @@
 
 ```diff
 - when new commit happens, you need to create new heroku app using Deploy to heroku button, So that you can use the new feature.
+- Supported Order Type: LIMIT, MARKET, STOP LOSS, STOP LOSS LIMIT, TAKE PROFIT, TAKE PROFIT LIMIT, LIMIT MAKER
 - OCO not supported
 ```
+------------
+
+## Donate using Binance Pay
+### Scan this QR Code Using Binance App Scanner
+
+![BinancePayQR](https://user-images.githubusercontent.com/79581397/165224398-587a9b11-2429-4154-93a2-682241503906.png)
+
 ------------
 
 <h3>Setup before Deploy to Heroku</h3>
@@ -101,11 +109,6 @@ If this library helped you out feel free to donate.
 - BTC: bc1qqewkmv335jdrt0jz6rn9sdm4jltd60qfw24fr9
 - ETH: 0xE7212AAD5A8cE7eb02eF9Bee05332A679811dAf1
 - NEO: AUp6giUAxQ3Y3RY8bUCuHrTa7HU25Ltuh4
-
-## Donate using Binance Pay
-### Scan this QR Code Using Binance App Scanner
-
-![BinancePayQR](https://user-images.githubusercontent.com/79581397/165224398-587a9b11-2429-4154-93a2-682241503906.png)
 
 ### My Binance Pay ID 
 ```sh
