@@ -50,24 +50,40 @@
 2. Login to Heroku (if you are not)
 3. Click [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/PiyushDixit96/binance-spot-order-notification-heroku)
 
-![fullUntitled](https://user-images.githubusercontent.com/79581397/117697809-89587b00-b1e0-11eb-98d3-3086f973ce84.jpg)
+![createAPP](https://user-images.githubusercontent.com/79581397/167077352-e5809718-b0e6-4271-96d6-ea25053732cb.jpeg)
 
-5. Give any name in "App name" field
-6. Fill required fields in "Config Vars"
-7. Click "Deploy app"
-8. When you see , "Your app was successfully deployed." then your bot started automatically.
-9. `important step for preventing idling heroku app`. Click "View" and copy URL when new tab open in your browser save to Notepad for later use
+4. Give any name in "App name" field
+5. Fill required fields in "Config Vars"
+6. Click "Deploy app"
+7. When you see , "Your app was successfully deployed." then your bot started automatically.
+8. `important step for preventing idling heroku app`.
+9. Click `Manage App`
 
-![DSCapture](https://user-images.githubusercontent.com/79581397/117698015-d1779d80-b1e0-11eb-8b57-0224ab96e3ee.JPG)
+![manageApp](https://user-images.githubusercontent.com/79581397/167078801-d5dc003b-e01a-4856-a6ab-4981d41f8b7c.jpeg)
 
-10. Goto [UptimeRobot](https://uptimerobot.com/) and Create free account
-11. Click "Add New Monitor"
-12. Monitor Type : HTTPS
-13. Friendly Name : any name
-14. URL (or IP): paste URL of your app. (you copy URL in Step 9)
-15. Monitoring Interval : 20 minutes
-16. Click " Create Monitor "
-17. Now Enjoy
+10. Click `Heroku Scheduler`
+ 
+![MopenScheduler](https://user-images.githubusercontent.com/79581397/167078857-d5056971-06e5-495c-8a9f-9efb854b6f8a.jpeg)
+
+11. Click `Create job`
+
+![createJob](https://user-images.githubusercontent.com/79581397/167079573-33c24c30-527c-4787-9a89-f96948692299.jpeg)
+
+12. Enter your `App URL` On `Run Command` Text Box
+13. To get your APP URL Go to `Step 10` Page Click `Open App` a new window open with your APP URL.
+
+![App URL](https://user-images.githubusercontent.com/79581397/167081433-7bed3d20-4f67-4c49-9b42-c35602be30c7.jpeg)
+
+14. Copy this URL look like this `https://floating-fjord-30360.herokuapp.com/`
+
+![Capture](https://user-images.githubusercontent.com/79581397/167082558-c41c50ed-3d25-4807-b76b-13016e66412b.JPG)
+
+15. Paste This URL with `curl` On `Run Command` Text Box, Example `curl https://floating-fjord-30360.herokuapp.com/`
+
+![jobEditor](https://user-images.githubusercontent.com/79581397/167079603-8da398b9-2110-4ab8-a721-135fe7972826.jpeg)
+
+16. Click `Save Job`
+
 ------------
 > <h3>Give a ⭐️ if this project helped you!</h3>
 ------------
