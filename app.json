@@ -4,6 +4,10 @@
     "logo": "https://i.ibb.co/WGZzx6r/Binance-Coin-BNB-icon.png",
     "repository": "https://github.com/PiyushDixit96/binance-spot-order-notification-heroku.git",
     "keywords": ["node", "binance","bot","market","maker","algo","crypto","spot","order","notifier","notification"],
+     "addons": [
+    {
+       "plan": "scheduler"
+    }],
     "env": {
       "BINANCE_API_KEY": {
         "description": "Your Binance API Key",
