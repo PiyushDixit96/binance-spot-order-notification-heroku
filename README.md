@@ -3,8 +3,6 @@
 
 ## Please contact us for Future Order notification bot. Telegram: [@Killer_PD](https://t.me/Killer_PD)</h2>
 
-# <p><a href="https://github.com/PiyushDixit96/binance-futures-fill-notification"><img src="https://github-readme-stats.vercel.app/api/pin?username=piyushdixit96&show_icons=true&theme=dracula&hide_border=false&repo=binance-futures-fill-notification"></a></p>
-<p>
 
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
