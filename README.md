@@ -93,6 +93,10 @@ TIME_ZONE_STRING="your time zone string"
 NOTIFICATION_SETTINGS="[{'NEW': 1, 'CANCELED': 1, 'TRADE': 1},{'LIMIT': 1, 'MARKET': 1, 'STOP_LOSS': 1},{'BUY': 1, 'SELL': 1}]"
 ```
 
+- TIME_ZONE_STRING is not required. Default "Asia/Kolkata"
+- NOTIFICATION_SETTINGS is not required. Default  [{"NEW":1,"CANCELED":1,"TRADE":1},{"LIMIT":1,"MARKET":1,"STOP_LOSS":1},{"BUY":1,"SELL":1}]
+
+
 ### NOTIFICATION_SETTINGS Description
 ```
 - 0 is Disable and 1 is Enable
