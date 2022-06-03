@@ -23,10 +23,17 @@ const token = process.env['TELEGRAM_TOKEN'];
 const chat_id = process.env['TELEGRAM_CHAT_ID'];
 const api_key = process.env['BINANCE_API_KEY'];
 const secret_key = process.env['BINANCE_SECRET_KEY'];
-const notification_settings = JSON.parse(process.env['NOTIFICATION_SETTINGS'].replace(/'/g,'"')) || noti_def;
-
 const NODE_ENV = process.env.NODE_ENV || "development";
 const port = process.env.PORT || 3000;
+
+const notification_settings = process.env['NOTIFICATION_SETTINGS'];
+if (typeof notification_settings == "undefined") {
+    notification_settings = noti_def
+}
+else{
+    notification_settings = JSON.parse(process.env['NOTIFICATION_SETTINGS'].replace(/'/g,'"'))
+}
+
 const timeZone = process.env.TIME_ZONE_STRING || 'Asia/Kolkata';
 if (NODE_ENV === "development") {
     console.log("NODE_ENV development")
@@ -34,13 +41,13 @@ if (NODE_ENV === "development") {
     console.log("NODE_ENV production")
 }
 
-console.log(notification_settings)
-
+console.log(`Your Notification Settings is - ${notification_settings}`);
 //Indian time string
 const event = new Date().toLocaleString('en-IN', {
     timeZone: timeZone,
     timeZoneName: 'short'
 });
+console.log(`Your TimeZone is - ${timeZone}`);
 //only for heroku port error
 const express = require('express');
 const app = express();
