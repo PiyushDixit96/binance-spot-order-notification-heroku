@@ -3,11 +3,27 @@
 const Request = require('request-promise');
 const dotenv = require('dotenv');
 dotenv.config();
+noti_def = [
+    {
+       "NEW":1,
+       "CANCELED":1,
+       "TRADE":1
+    },
+    {
+       "LIMIT":1,
+       "MARKET":1,
+       "STOP_LOSS":1
+    },
+    {
+       "BUY":1,
+       "SELL":1
+    }
+]
 const token = process.env['TELEGRAM_TOKEN'];
 const chat_id = process.env['TELEGRAM_CHAT_ID'];
 const api_key = process.env['BINANCE_API_KEY'];
 const secret_key = process.env['BINANCE_SECRET_KEY'];
-const notification_settings = JSON.parse(process.env['NOTIFICATION_SETTINGS'].replace(/'/g,'"'));
+const notification_settings = JSON.parse(process.env['NOTIFICATION_SETTINGS'].replace(/'/g,'"')) || noti_def;
 
 const NODE_ENV = process.env.NODE_ENV || "development";
 const port = process.env.PORT || 3000;
