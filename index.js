@@ -19,14 +19,14 @@ noti_def = [
        "SELL":1
     }
 ]
-const token = process.env['TELEGRAM_TOKEN'];
-const chat_id = process.env['TELEGRAM_CHAT_ID'];
-const api_key = process.env['BINANCE_API_KEY'];
-const secret_key = process.env['BINANCE_SECRET_KEY'];
-const NODE_ENV = process.env.NODE_ENV || "development";
-const port = process.env.PORT || 3000;
+var token = process.env['TELEGRAM_TOKEN'];
+var chat_id = process.env['TELEGRAM_CHAT_ID'];
+var api_key = process.env['BINANCE_API_KEY'];
+var secret_key = process.env['BINANCE_SECRET_KEY'];
+var NODE_ENV = process.env.NODE_ENV || "development";
+var port = process.env.PORT || 3000;
 
-const notification_settings = process.env['NOTIFICATION_SETTINGS'];
+var notification_settings = process.env['NOTIFICATION_SETTINGS'];
 if (typeof notification_settings == "undefined") {
     notification_settings = noti_def
 }
@@ -34,7 +34,7 @@ else{
     notification_settings = JSON.parse(process.env['NOTIFICATION_SETTINGS'].replace(/'/g,'"'))
 }
 
-const timeZone = process.env.TIME_ZONE_STRING || 'Asia/Kolkata';
+var timeZone = process.env.TIME_ZONE_STRING || 'Asia/Kolkata';
 if (NODE_ENV === "development") {
     console.log("NODE_ENV development")
 } else {
@@ -75,8 +75,8 @@ try {
 }
 
 function fixFloat(floatNum, Precision = 8) {
-    const num = Number.parseFloat(floatNum).toFixed(Precision);
-    const str = num.toString();
+    var num = Number.parseFloat(floatNum).toFixed(Precision);
+    var str = num.toString();
     return str.replace(/(\.\d+?)0+\b/g, "$1") //fix 20.000 to 20.0 or 0.0000000120 to 0.000000012
 }
 //[{"NEW": 1, "CANCELED": 1, "TRADE": 1},{"LIMIT": 1, "MARKET": 1, "STOP_LOSS": 1},{"BUY": 1, "SELL": 1}]
