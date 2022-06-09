@@ -131,7 +131,6 @@ Time zone string example "Asia/Kolkata" and this is not required. [See Time zone
 
 👤 **Piyush Dixit**
 
-* Twitter: [@PiyushDixit\_](https://twitter.com/PiyushDixit_)
 * Github: [@PiyushDixit96](https://github.com/PiyushDixit96)
 * Telegram: [@Killer_PD](https://t.me/Killer_PD)
 
