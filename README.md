@@ -20,7 +20,7 @@
 - OCO not supported
 ```
 
-[![Deploy to DO](https://mp-assets1.sfo2.digitaloceanspaces.com/deploy-to-do/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/PiyushDixit96/binance-spot-order-notification-heroku/tree/main?refcode=b73eccc195f2&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/PiyushDixit96/binance-spot-order-notification-heroku)
+[![Deploy to DO](https://mp-assets1.sfo2.digitaloceanspaces.com/deploy-to-do/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/PiyushDixit96/binance-spot-order-notification-heroku/tree/main&refcode=b73eccc195f2) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/PiyushDixit96/binance-spot-order-notification-heroku)
 
 <h3>Setup before Deploy</h3>
 
