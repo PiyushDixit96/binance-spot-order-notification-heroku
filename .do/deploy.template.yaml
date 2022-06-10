@@ -1,9 +1,9 @@
 spec:
   name: binance-spot-order-notification-heroku
   services:
+    - name: web
     - build_command: npm run build
     environment_slug: node-js
-    name: binance-spot-order-notification-heroku
     git:
         branch: main
         repo_clone_url: https://github.com/PiyushDixit96/binance-spot-order-notification-heroku.git
