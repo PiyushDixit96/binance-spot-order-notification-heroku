@@ -1,7 +1,7 @@
 <h1 align="center">Welcome to Binance Spot Order Notifier(NodeJS) via Telegram👋</h1>
 <h2>Binance order notification when order created, cancelled or filled etc.. With this repo you will receive telegram notification for your binance spot order status.
 
-## Please contact us for Future Order notification bot. Telegram: [@Killer_PD](https://t.me/Killer_PD)</h2>
+## If You want Futures Positions Bot, Goto to <a href="https://github.com/PiyushDixit96/binance-futures-fill-notification" target="_blank">Futures Position Notification Bot</a></h2>
 
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
