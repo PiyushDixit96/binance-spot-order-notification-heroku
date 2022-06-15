@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import Request from "request-promise";
-import dotenv from "dotenv";
-import express from "express";
+const Request = require('request-promise');
+const dotenv = require('dotenv');
+const express = require('express');
 
 dotenv.config();
 let notification_def = [
