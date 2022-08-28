@@ -84,7 +84,7 @@
 - Download Repo and open Repo root folder.
 - Create .env in root folder and copy , paste below code
  ```sh
-TELEGRAM_TOKEN="you telegram token"
+TELEGRAM_TOKEN="your telegram token"
 TELEGRAM_CHAT_ID="your telegram chat id"
 BINANCE_API_KEY="binance api key"
 BINANCE_SECRET_KEY="binance api secret"
